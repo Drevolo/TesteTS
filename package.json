@@ -1,0 +1,9 @@
+{
+  "name": "supabase-crud",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd frontend && npx tsc && cd ../backend && npx tsc",
+    "start": "node backend/dist/server.js",
+    "dev": "cd backend && npm run dev"
+  }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRUD Supabase</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f0f2f5;
+      display: flex; justify-content: center; padding: 40px 20px;
+    }
+    .container { width: 100%; max-width: 700px; }
+    h1 { text-align: center; color: #1a1a2e; margin-bottom: 24px; }
+    .card {
+      background: #fff; border-radius: 12px; padding: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 24px;
+    }
+    .card h2 { margin-bottom: 16px; color: #333; font-size: 18px; }
+    form { display: flex; flex-direction: column; gap: 12px; }
+    input, textarea {
+      padding: 10px 14px; border: 1px solid #ddd; border-radius: 8px;
+      font-size: 14px; outline: none; transition: border 0.2s;
+    }
+    input:focus, textarea:focus { border-color: #4f46e5; }
+    textarea { resize: vertical; min-height: 80px; }
+    button {
+      padding: 10px 20px; border: none; border-radius: 8px;
+      font-size: 14px; font-weight: 600; cursor: pointer; transition: 0.2s;
+    }
+    .btn-primary { background: #4f46e5; color: #fff; }
+    .btn-primary:hover { background: #4338ca; }
+    .btn-danger { background: #ef4444; color: #fff; padding: 6px 12px; font-size: 12px; }
+    .btn-danger:hover { background: #dc2626; }
+    .btn-edit { background: #f59e0b; color: #fff; padding: 6px 12px; font-size: 12px; margin-right: 6px; }
+    .btn-edit:hover { background: #d97706; }
+    .btn-cancel { background: #6b7280; color: #fff; }
+    .btn-cancel:hover { background: #4b5563; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid #eee; }
+    th { color: #666; font-size: 13px; text-transform: uppercase; }
+    td { font-size: 14px; color: #333; }
+    .actions { display: flex; gap: 4px; }
+    .empty { text-align: center; color: #999; padding: 24px; }
+    .error { color: #ef4444; font-size: 13px; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>CRUD com Supabase</h1>
+
+    <div class="card" id="form-card">
+      <h2 id="form-title">Adicionar Item</h2>
+      <form id="item-form">
+        <input type="text" id="nome" placeholder="Nome" required />
+        <textarea id="descricao" placeholder="Descrição" required></textarea>
+        <div style="display:flex; gap:8px;">
+          <button type="submit" class="btn-primary" id="submit-btn">Adicionar</button>
+          <button type="button" class="btn-cancel" id="cancel-btn" style="display:none;">Cancelar</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>Itens</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="items-table-body">
+          <tr><td colspan="4" class="empty">Carregando...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="dist/app.js"></script>
+</body>
+</html>
